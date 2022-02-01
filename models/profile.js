@@ -12,7 +12,7 @@ const profileSchema = mongoose.Schema({
   cv: String,
   location: String,
  
-    isEmployed: String,
+    isEmployed: Boolean,
     employedInTech: String,
     employedOther: String,
     freelance: String,
