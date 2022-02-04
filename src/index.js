@@ -86,7 +86,31 @@ app.put('/:id', async (req, res) => {
   res.send({ message: 'Profile updated.' });
 });
 
+//Employer Find - Frontend
+app.post('/tda/employersearch', async (req, res) => {
+  const { sEmail, sFirstname, sLastname, sSkills, sLocation} = req.body
+  const query = {}
+  if (sFirstname) {
+    query.firstName = {$regex: sFirstname,$options:'i'}
+  }
+  if (sLastname) {
+    query.lastName = {$regex: sLastname,$options:'i'}
+  }
+  if (sEmail){
+    query.email = {$regex: sEmail,$options:'i'}
+  }
 
+  if(sSkills != ""){
+    query.skills = {$in: sSkills}
+  }
+  if (sLocation){
+    query.location = {$regex: sLocation,$options:'i'}
+  }
+
+
+  console.log(query)
+  res.send(await Profile.find(query).where("isEmployed").equals(false).lean())
+})
 
 
 // starting the server
