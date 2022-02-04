@@ -18,7 +18,7 @@ const profileSchema = mongoose.Schema({
   // currentVacancies: String,
 
  
-    // isEmployed: Boolean,
+    isEmployed: Boolean,
     // employedInTech: String,
     // employedOther: String,
     // freelance: String,
@@ -30,8 +30,8 @@ const profileSchema = mongoose.Schema({
 
   portfolio: String,
   github: String,
-//  linkedin: String,
-//  skills: Array,
+  linkedin: String,
+  skills: Array,
 })
 
 module.exports.Profile = mongoose.model('Profile', profileSchema)
